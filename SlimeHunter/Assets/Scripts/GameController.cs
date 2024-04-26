@@ -12,12 +12,13 @@ public class GameController : MonoBehaviour
     private float v = 0;
     public Animator animator;
     
-    public float moveSpeed;
+    public static float moveSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
+        moveSpeed = 0.1f;
     }
 
     // Update is called once per frame
