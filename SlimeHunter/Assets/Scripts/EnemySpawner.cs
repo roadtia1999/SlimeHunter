@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public float MaxY;
     public float MinY;
 
+    public int waveTime;
     public float Lvl1_SpawnTime;
 
     // Start is called before the first frame update
@@ -47,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
 
         totalTime += Time.deltaTime;
         spawnTime += Time.deltaTime;
-        int currentWave = (int)totalTime / 60;
+        int currentWave = (int)totalTime / waveTime;
         switch (currentWave)
         {
             case 0:

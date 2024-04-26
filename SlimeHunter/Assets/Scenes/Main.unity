@@ -790,6 +790,7 @@ MonoBehaviour:
   MinX: -5.5
   MaxY: 3.5
   MinY: -3.5
+  waveTime: 60
   Lvl1_SpawnTime: 2
 --- !u!4 &1453399776
 Transform:
