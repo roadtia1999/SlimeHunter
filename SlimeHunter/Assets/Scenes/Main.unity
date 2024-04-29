@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 292825749}
   - component: {fileID: 292825750}
   m_Layer: 0
-  m_Name: BoxCollider
+  m_Name: RaycastCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
