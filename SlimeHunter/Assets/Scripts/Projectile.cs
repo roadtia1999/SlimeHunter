@@ -32,8 +32,11 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         transform.Translate(Vector3.down * projSpeed * Time.deltaTime);
-        // Debug.Log(transform.forward);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 }

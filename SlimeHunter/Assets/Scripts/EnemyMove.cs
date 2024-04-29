@@ -7,7 +7,6 @@ public class EnemyMove : MonoBehaviour
     private GameObject target;
     private SpriteRenderer spriteRenderer;
     public float moveSpeed;
-    public float fixedSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +35,6 @@ public class EnemyMove : MonoBehaviour
             spriteRenderer.flipX = true;
         }
         transform.Translate(move * moveSpeed * Time.deltaTime);
-        transform.Translate(backgroundMove * GameController.moveSpeed * Time.deltaTime * fixedSpeed);
+        transform.Translate(backgroundMove * GameController.moveSpeed * Time.deltaTime * GameController.fixedSpeed);
     }
 }
