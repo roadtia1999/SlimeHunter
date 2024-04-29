@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8296422506604846069}
   - component: {fileID: 8296422506604846067}
   - component: {fileID: 9116902035078833316}
+  - component: {fileID: 8552047171391449991}
   m_Layer: 0
   m_Name: Enemy_Slime_Weak
   m_TagString: Untagged
@@ -121,3 +122,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
   fixedSpeed: 14
+--- !u!58 &8552047171391449991
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296422506604846068}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.4

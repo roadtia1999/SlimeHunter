@@ -31,27 +31,18 @@ public class Shooter : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(0);
-
-        /*
-
         for (int i = 0; i < projCount; i++)
         {
             yield return new WaitForSeconds(0.2f);
 
-            Vector2 mouse = Input.mousePosition - transform.position;
-            mouse.Normalize();
-            
             switch (projUpgrade)
             {
                 case 1:
-                    Instantiate(proj, transform.position, Quaternion.AngleAxis(0, mouse));
+                    Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 0));
                     break;
                 default:
                     break;
             }
         }
-
-        */
     }
 }
