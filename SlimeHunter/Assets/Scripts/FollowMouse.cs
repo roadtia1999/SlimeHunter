@@ -5,11 +5,13 @@ using UnityEngine;
 public class FollowMouse : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private CircleCollider2D circleCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -19,10 +21,12 @@ public class FollowMouse : MonoBehaviour
         if (mouseX >= 0)
         {
             spriteRenderer.flipX = false;
+            circleCollider.offset = new Vector2(-0.1f, 0);
         }
         else
         {
             spriteRenderer.flipX = true;
+            circleCollider.offset = new Vector2(0.1f, 0);
         }
     }
 }

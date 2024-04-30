@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     private float actionReady;
     public float actionRate;
     public float invincibleTime;
+    public static bool ultTime;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class GameController : MonoBehaviour
         playerHP = 100f;
         invAfterHit = false;
         invCoroutine = false;
+        ultTime = false;
 
         HPBar.value = playerHP / playerMaxHP;
         actionBar.value = 0;
@@ -58,7 +60,11 @@ public class GameController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            // insert ult here
+            if (actionBar.value >= 1)
+            {
+                actionReady = 0;
+                ultTime = true;
+            }
         }
     }
 
