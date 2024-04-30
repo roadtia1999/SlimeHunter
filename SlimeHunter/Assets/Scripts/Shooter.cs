@@ -6,6 +6,7 @@ public class Shooter : MonoBehaviour
 {
     public float shootPerSecond;
     private float idleTime;
+    public static bool playerAction;
 
     public int projUpgrade;
     public int projCount;
@@ -16,6 +17,7 @@ public class Shooter : MonoBehaviour
     void Start()
     {
         idleTime = 0;
+        playerAction = false;
     }
 
     // Update is called once per frame

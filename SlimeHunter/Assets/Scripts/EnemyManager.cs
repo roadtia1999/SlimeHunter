@@ -30,4 +30,13 @@ public class EnemyManager : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!GameController.invAfterHit)
+        {
+            GameController.invAfterHit = true;
+            GameController.playerHP -= Damage;
+        }
+    }
 }
