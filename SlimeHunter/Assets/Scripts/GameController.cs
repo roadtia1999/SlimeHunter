@@ -25,9 +25,11 @@ public class GameController : MonoBehaviour
     public static int currentEXP;
     public static int currentMaxEXP;
     public int levelOneMaxEXP;
+    public static int currentLvl;
 
     public Slider HPBar;
     public Slider actionBar;
+    public Slider EXPBar;
     private float actionReady;
     public float actionRate;
     public float invincibleTime;
@@ -38,7 +40,7 @@ public class GameController : MonoBehaviour
     {
         Application.targetFrameRate = 144;
         moveSpeed = 0.1f;
-        fixedSpeed = 13f;
+        fixedSpeed = 10.1f;
         hitDamage = 10f;
         playerHP = 100f;
         invAfterHit = false;
@@ -47,6 +49,7 @@ public class GameController : MonoBehaviour
 
         currentEXP = 0;
         currentMaxEXP = levelOneMaxEXP;
+        currentLvl = 1;
 
         HPBar.value = playerHP / playerMaxHP;
         actionBar.value = 0;
@@ -72,6 +75,11 @@ public class GameController : MonoBehaviour
                 actionReady = 0;
                 ultTime = true;
             }
+        }
+
+        if (currentEXP >= currentMaxEXP)
+        {
+            lvlUp();
         }
     }
 
@@ -117,6 +125,15 @@ public class GameController : MonoBehaviour
         {
             HPBar.value = playerHP / playerMaxHP;
         }
+
+        if (currentEXP / currentMaxEXP >= 1)
+        {
+            EXPBar.value = 1;
+        }
+        else
+        {
+            EXPBar.value = (float)currentEXP / (float)currentMaxEXP;
+        }
     }
 
     IEnumerator InvincibleTimeAfterHit()
@@ -134,5 +151,12 @@ public class GameController : MonoBehaviour
         invCoroutine = false;
         invAfterHit = false;
         hitEffect.gameObject.SetActive(false);
+    }
+
+    void lvlUp()
+    {
+        currentEXP = 0;
+        currentMaxEXP += 2;
+        currentLvl++;
     }
 }
