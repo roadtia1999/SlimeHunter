@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     public float HP;
     public float Damage;
+    public GameObject dropEXP;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class EnemyManager : MonoBehaviour
             HP -= GameController.hitDamage;
             if (HP <= 0)
             {
+                Instantiate(dropEXP, transform.position, new Quaternion(0, 0, 0, 0));
                 Destroy(gameObject);
             }
         }

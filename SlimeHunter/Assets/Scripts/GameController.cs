@@ -22,6 +22,10 @@ public class GameController : MonoBehaviour
     public static bool invAfterHit;
     private bool invCoroutine;
 
+    public static int currentEXP;
+    public static int currentMaxEXP;
+    public int levelOneMaxEXP;
+
     public Slider HPBar;
     public Slider actionBar;
     private float actionReady;
@@ -34,12 +38,15 @@ public class GameController : MonoBehaviour
     {
         Application.targetFrameRate = 144;
         moveSpeed = 0.1f;
-        fixedSpeed = 14f;
+        fixedSpeed = 13f;
         hitDamage = 10f;
         playerHP = 100f;
         invAfterHit = false;
         invCoroutine = false;
         ultTime = false;
+
+        currentEXP = 0;
+        currentMaxEXP = levelOneMaxEXP;
 
         HPBar.value = playerHP / playerMaxHP;
         actionBar.value = 0;

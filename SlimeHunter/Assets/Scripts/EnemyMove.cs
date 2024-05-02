@@ -21,11 +21,6 @@ public class EnemyMove : MonoBehaviour
         Vector3 move = target.transform.position - transform.position;
         move.Normalize();
 
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Vector2 backgroundMove = new Vector2(-h, -v);
-        backgroundMove.Normalize();
-
         if (move.x >= 0)
         {
             spriteRenderer.flipX = false;
@@ -35,6 +30,5 @@ public class EnemyMove : MonoBehaviour
             spriteRenderer.flipX = true;
         }
         transform.Translate(move * moveSpeed * Time.deltaTime);
-        transform.Translate(backgroundMove * GameController.moveSpeed * Time.deltaTime * GameController.fixedSpeed);
     }
 }
