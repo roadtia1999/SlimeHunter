@@ -41,36 +41,21 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 spawn = RandomSpawnPoint();
-        Quaternion qtn = Quaternion.identity;
-
         totalTime += Time.deltaTime;
         spawnTime += Time.deltaTime;
         int currentWave = (int)totalTime / waveTime;
         switch (currentWave)
         {
             case 0:
-                if (spawnTime > Lvl1_SpawnTime)
-                {
-                    spawnTime = 0;
-                    Instantiate(enemySlimes[0], spawn, qtn);
-                }
+                NormalPattern(Lvl1_SpawnTime, enemySlimes[0]);
                 break;
             case 1:
-                if (spawnTime > Lvl2_SpawnTime)
-                {
-                    spawnTime = 0;
-                    Instantiate(enemySlimes[0], spawn, qtn);
-                }
+                NormalPattern(Lvl2_SpawnTime, enemySlimes[0]);
                 break;
             case 2:
                 if (Lvl3_Pattern_On)
                 {
-                    if (spawnTime > Lvl3_SpawnTime)
-                    {
-                        spawnTime = 0;
-                        Instantiate(enemySlimes[0], spawn, qtn);
-                    }
+                    NormalPattern(Lvl3_SpawnTime, enemySlimes[0]);
                 }
                 else
                 {
@@ -99,6 +84,15 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    void NormalPattern(float spawnRoutine, GameObject obj)
+    {
+        if (spawnTime > spawnRoutine)
+        {
+            spawnTime = 0;
+            Instantiate(obj, RandomSpawnPoint(), Quaternion.identity);
+        }
+    }
+
     Vector3 RandomSpawnPoint()
     {
         int rand = Random.Range(1, 4);
@@ -107,19 +101,14 @@ public class EnemySpawner : MonoBehaviour
         {
             case 1:
                 return new Vector3(MinX, Random.Range(MinY, MaxY), 0);
-                break;
             case 2:
                 return new Vector3(MaxX, Random.Range(MinY, MaxY), 0);
-                break;
             case 3:
                 return new Vector3(Random.Range(MinX, MaxX), MinY, 0);
-                break;
             case 4:
                 return new Vector3(Random.Range(MinX, MaxX), MaxY, 0);
-                break;
             default:
                 return new Vector3(MinX, Random.Range(MinY, MaxY), 0);
-                break;
         }
     }
 

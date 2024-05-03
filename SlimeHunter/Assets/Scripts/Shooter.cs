@@ -50,20 +50,24 @@ public class Shooter : MonoBehaviour
         }
     }
 
+    void Shoot()
+    {
+        switch (projUpgrade)
+        {
+            case 1:
+                Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 0));
+                break;
+            default:
+                break;
+        }
+    }
+
     IEnumerator NormalShoot()
     {
         for (int i = 0; i < projCount; i++)
         {
             yield return new WaitForSeconds(0.2f);
-
-            switch (projUpgrade)
-            {
-                case 1:
-                    Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 0));
-                    break;
-                default:
-                    break;
-            }
+            Shoot();
         }
     }
 
@@ -76,14 +80,7 @@ public class Shooter : MonoBehaviour
         while(GameController.ultTime)
         {
             yield return new WaitForSeconds(0.1f);
-            switch (projUpgrade)
-            {
-                case 1:
-                    Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 0));
-                    break;
-                default:
-                    break;
-            }
+            Shoot();
         }
     }
 
