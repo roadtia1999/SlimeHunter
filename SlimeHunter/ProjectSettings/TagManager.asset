@@ -11,10 +11,10 @@ TagManager:
   - Player
   - Water
   - UI
-  - DestroyZone
+  - Enemy
   - Raycast
   - Attack
-  - 
+  - EXP
   - 
   - 
   - 
