@@ -18,7 +18,10 @@ public class TimeCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timePassed += Time.deltaTime;
-        text.text = string.Format("{0:D2}:{1:D2}", (int)timePassed / 60, (int)timePassed % 60);
+        if (GameController.playerHP > 0)
+        {
+            timePassed += Time.deltaTime;
+            text.text = string.Format("{0:D2}:{1:D2}", (int)timePassed / 60, (int)timePassed % 60);
+        }
     }
 }

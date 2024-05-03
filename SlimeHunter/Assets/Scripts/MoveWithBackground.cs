@@ -13,11 +13,14 @@ public class MoveWithBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Vector2 backgroundMove = new Vector2(-h, -v);
-        backgroundMove.Normalize();
+        if (GameController.playerHP > 0)
+        {
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+            Vector2 backgroundMove = new Vector2(-h, -v);
+            backgroundMove.Normalize();
 
-        transform.Translate(backgroundMove * GameController.moveSpeed * Time.deltaTime * GameController.fixedSpeed);
+            transform.Translate(backgroundMove * GameController.moveSpeed * Time.deltaTime * GameController.fixedSpeed);
+        }
     }
 }

@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
         moveSpeed = 0.1f;
         fixedSpeed = 10.1f;
         hitDamage = 10f;
-        playerHP = 100f;
+        playerHP = playerMaxHP;
         invAfterHit = false;
         invCoroutine = false;
         ultTime = false;
@@ -59,27 +59,31 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bgMove();
         calcBar();
 
-        if (invAfterHit && !invCoroutine)
+        if (playerHP > 0)
         {
-            invCoroutine = true;
-            StartCoroutine(InvincibleTimeAfterHit());
-        }
+            bgMove();
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (actionBar.value >= 1)
+            if (invAfterHit && !invCoroutine)
             {
-                actionReady = 0;
-                ultTime = true;
+                invCoroutine = true;
+                StartCoroutine(InvincibleTimeAfterHit());
             }
-        }
 
-        if (currentEXP >= currentMaxEXP)
-        {
-            lvlUp();
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (actionBar.value >= 1)
+                {
+                    actionReady = 0;
+                    ultTime = true;
+                }
+            }
+
+            if (currentEXP >= currentMaxEXP)
+            {
+                lvlUp();
+            }
         }
     }
 
@@ -103,7 +107,7 @@ public class GameController : MonoBehaviour
 
     void calcBar()
     {
-        if (actionBar.value < 1)
+        if (actionBar.value < 1 && playerHP > 0)
         {
             actionReady += Time.deltaTime;
         }

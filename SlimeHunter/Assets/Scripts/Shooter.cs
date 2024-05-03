@@ -27,22 +27,25 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.ultTime == true)
+        if (GameController.playerHP > 0)
         {
-            idleTime = 0;
-            if (!ulting)
+            if (GameController.ultTime == true)
             {
-                ulting = true;
-                StartCoroutine(UltShoot());
-            }
-        }
-        else
-        {
-            idleTime += Time.deltaTime;
-            if (idleTime >= shootPerSecond)
-            {
-                StartCoroutine(NormalShoot());
                 idleTime = 0;
+                if (!ulting)
+                {
+                    ulting = true;
+                    StartCoroutine(UltShoot());
+                }
+            }
+            else
+            {
+                idleTime += Time.deltaTime;
+                if (idleTime >= shootPerSecond)
+                {
+                    StartCoroutine(NormalShoot());
+                    idleTime = 0;
+                }
             }
         }
     }

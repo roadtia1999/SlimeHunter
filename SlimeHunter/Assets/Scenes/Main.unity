@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 636965088}
   - component: {fileID: 636965089}
   - component: {fileID: 636965090}
+  - component: {fileID: 636965091}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1162,6 +1163,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &636965091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636965083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b0c1058ca1d664b8317bdc8b4a68dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 636965086}
 --- !u!1 &734962084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2105,7 @@ MonoBehaviour:
   levelOneMaxEXP: 8
   HPBar: {fileID: 565330159}
   actionBar: {fileID: 592870445}
+  EXPBar: {fileID: 1282620181}
   actionRate: 30
   invincibleTime: 0.6
 --- !u!4 &2060696720

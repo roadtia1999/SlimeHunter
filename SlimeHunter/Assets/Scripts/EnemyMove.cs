@@ -18,17 +18,20 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = target.transform.position - transform.position;
-        move.Normalize();
+        if (GameController.playerHP > 0)
+        {
+            Vector3 move = target.transform.position - transform.position;
+            move.Normalize();
 
-        if (move.x >= 0)
-        {
-            spriteRenderer.flipX = false;
+            if (move.x >= 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else
+            {
+                spriteRenderer.flipX = true;
+            }
+            transform.Translate(move * moveSpeed * Time.deltaTime);
         }
-        else
-        {
-            spriteRenderer.flipX = true;
-        }
-        transform.Translate(move * moveSpeed * Time.deltaTime);
     }
 }
