@@ -78,6 +78,7 @@ public class EnemySpawner : MonoBehaviour
             case 9:
                 break;
             case 10:
+                endTime = true;
                 break;
             default:
                 break;
