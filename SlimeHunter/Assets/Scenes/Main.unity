@@ -1721,6 +1721,13 @@ MonoBehaviour:
   Lvl1_SpawnTime: 2
   Lvl2_SpawnTime: 1
   Lvl3_SpawnTime: 0.75
+  Lvl4_SpawnTime: 0.1
+  Lvl5_SpawnTime: 0.1
+  Lvl6_SpawnTime: 0.1
+  Lvl7_SpawnTime: 0.1
+  Lvl8_SpawnTime: 0.1
+  Lvl9_SpawnTime: 0.1
+  Lvl10_SpawnTime: 0.1
 --- !u!4 &1453399776
 Transform:
   m_ObjectHideFlags: 0
