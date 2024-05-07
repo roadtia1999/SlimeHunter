@@ -1996,6 +1996,7 @@ MonoBehaviour:
   enemySlimes:
   - {fileID: 8296422506604846068, guid: d9bed880f4c274a4ab00c38dbf26d0c0, type: 3}
   - {fileID: 5514795410713881711, guid: 4ccbf6b8cc0606346bf7d6f0e546bdba, type: 3}
+  - {fileID: 2433575918790687633, guid: f89f7e03445c4ba4fa3d05e22f84b5f9, type: 3}
   MaxX: 5.5
   MinX: -5.5
   MaxY: 3.5
@@ -2011,6 +2012,7 @@ MonoBehaviour:
   Lvl8_SpawnTime: 0.1
   Lvl9_SpawnTime: 0.1
   Lvl10_SpawnTime: 0.1
+  Lvl3_Pattern_SpawnTime: 9.5
 --- !u!4 &1453399776
 Transform:
   m_ObjectHideFlags: 0

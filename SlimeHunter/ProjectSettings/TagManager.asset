@@ -50,3 +50,6 @@ TagManager:
   - name: Attack
     uniqueID: 2571880563
     locked: 0
+  - name: GameKiller
+    uniqueID: 4209258685
+    locked: 0

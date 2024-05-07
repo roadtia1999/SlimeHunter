@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimeCount : MonoBehaviour
 {
     private Text text;
-    private float timePassed;
+    public static float timePassed;
 
     // Start is called before the first frame update
     void Start()

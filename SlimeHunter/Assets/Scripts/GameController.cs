@@ -64,7 +64,10 @@ public class GameController : MonoBehaviour
 
         if (playerHP > 0)
         {
-            bgMove();
+            if (TimeCount.timePassed < 600)
+            {
+                bgMove();
+            }
 
             if (invAfterHit && !invCoroutine)
             {

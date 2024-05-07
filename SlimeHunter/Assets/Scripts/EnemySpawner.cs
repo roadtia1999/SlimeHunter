@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public List<GameObject> enemySlimes;
-    private float totalTime;
     private float spawnTime;
     public static bool endTime;
 
@@ -26,12 +25,13 @@ public class EnemySpawner : MonoBehaviour
     public float Lvl9_SpawnTime;
     public float Lvl10_SpawnTime;
 
+    public float Lvl3_Pattern_SpawnTime;
+
     private bool Lvl3_Pattern_On;
 
     // Start is called before the first frame update
     void Start()
     {
-        totalTime = 0;
         spawnTime = 0;
         endTime = false;
 
@@ -41,9 +41,8 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalTime += Time.deltaTime;
         spawnTime += Time.deltaTime;
-        int currentWave = (int)totalTime / waveTime;
+        int currentWave = (int)TimeCount.timePassed / waveTime;
         switch (currentWave)
         {
             case 0:
@@ -59,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(Lvl3Pattern());
+                    StartCoroutine(PatternSpawn(Lvl3_Pattern_SpawnTime, enemySlimes[1], currentWave + 1));
                     Lvl3_Pattern_On = true;
                 }
                 break;
@@ -78,7 +77,11 @@ public class EnemySpawner : MonoBehaviour
             case 9:
                 break;
             case 10:
-                endTime = true;
+                if (!endTime)
+                {
+                    Instantiate(enemySlimes[2], new Vector3(0, 5, 0), Quaternion.identity);
+                    endTime = true;
+                }
                 break;
             default:
                 break;
@@ -113,12 +116,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    IEnumerator Lvl3Pattern()
+    IEnumerator PatternSpawn(float spawnRoutine, GameObject obj, int level)
     {
         do
         {
-            Instantiate(enemySlimes[1], RandomSpawnPoint(), Quaternion.identity);
-            yield return new WaitForSeconds(9.5f);
-        } while (totalTime < 180);
+            Instantiate(obj, RandomSpawnPoint(), Quaternion.identity);
+            yield return new WaitForSeconds(spawnRoutine);
+        } while (TimeCount.timePassed < level * 60);
     }
 }
