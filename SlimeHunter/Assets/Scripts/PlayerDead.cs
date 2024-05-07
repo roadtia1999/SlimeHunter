@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDead : MonoBehaviour
 {
     public Animator anim;
+    public GameObject gameOverMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +27,6 @@ public class PlayerDead : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         anim.speed = 0f;
+        gameOverMenu.SetActive(true);
     }
 }
