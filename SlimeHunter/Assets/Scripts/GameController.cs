@@ -36,6 +36,13 @@ public class GameController : MonoBehaviour
     public float invincibleTime;
     public static bool ultTime;
 
+    public GameObject levelUpMenu;
+    public int totalItems;
+    private int mainWeaponLvl;
+    private List<Subweapon> subweapons;
+
+    public List<ItemDatabase> itemDatabase;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +62,8 @@ public class GameController : MonoBehaviour
         HPBar.value = playerHP / playerMaxHP;
         actionBar.value = 0;
         actionReady = 0;
+
+        mainWeaponLvl = 0;
     }
 
     // Update is called once per frame
@@ -166,10 +175,18 @@ public class GameController : MonoBehaviour
         currentEXP = 0;
         currentMaxEXP += 2;
         currentLvl++;
+        Time.timeScale = 0f;
+        levelUpMenu.SetActive(true);
     }
 
     public void RestartButtonClicked()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+}
+
+class Subweapon
+{
+    int code;
+    int upgrade;
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13837f7c985efa64bbf2aeae91f7580e, type: 3}
+  m_Name: '#6_SpeedUp'
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: d21477cfe5bd9b241829ff55ea9dc07a, type: 3}
+  tag: Passive
+  itemName: "\uC774\uB3D9\uC18D\uB3C4 \uC0C1\uC2B9"
+  levelUpDescription:
+  - "[\uD328\uC2DC\uBE0C] \uC774\uB3D9 \uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  enhancementTag: 0700000000000000000000000000000000000000000000000000000000000000
+  enhancementValue: 0.03
