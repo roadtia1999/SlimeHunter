@@ -41,7 +41,14 @@ public class EnemyManager : MonoBehaviour
         if (!GameController.invAfterHit)
         {
             GameController.invAfterHit = true;
-            GameController.playerHP -= Damage;
+            if (Damage - GameController.defense > 1)
+            {
+                GameController.playerHP -= Damage - GameController.defense;
+            }
+            else
+            {
+                GameController.playerHP -= 1;
+            }
         }
     }
 }

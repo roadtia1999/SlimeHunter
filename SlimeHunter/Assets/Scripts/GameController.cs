@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     public static float fixedSpeed;
     public static float hitDamage;
     public static float playerHP;
+    public static float defense;
     public float playerMaxHP;
     public static bool invAfterHit;
     private bool invCoroutine;
@@ -60,6 +61,7 @@ public class GameController : MonoBehaviour
         moveSpeed = 0.1f;
         fixedSpeed = 10.1f;
         hitDamage = 10f;
+        defense = 0;
         playerHP = playerMaxHP;
         invAfterHit = false;
         invCoroutine = false;
