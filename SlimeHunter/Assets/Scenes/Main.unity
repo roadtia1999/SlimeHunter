@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 68368285}
   - component: {fileID: 68368284}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Description1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 556091756}
   - component: {fileID: 556091755}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Description2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,7 +1713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &976486678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1807,7 +1807,7 @@ GameObject:
   - component: {fileID: 1023668639}
   - component: {fileID: 1023668638}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Title2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2530,7 +2530,7 @@ GameObject:
   - component: {fileID: 1380950590}
   - component: {fileID: 1380950589}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Title1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3175,6 +3175,7 @@ GameObject:
   - component: {fileID: 1740357937}
   - component: {fileID: 1740357936}
   - component: {fileID: 1740357938}
+  - component: {fileID: 1740357939}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -3264,6 +3265,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1740357939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740357934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f212a9dba0d6864a88e9eb1a529b09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartButton: {fileID: 1654786507}
+  exitButton: {fileID: 1115112084}
 --- !u!1 &1867300823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,7 +3415,7 @@ GameObject:
   - component: {fileID: 1885483709}
   - component: {fileID: 1885483708}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3556,7 +3571,7 @@ GameObject:
   - component: {fileID: 1954549925}
   - component: {fileID: 1954549924}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3699,10 +3714,24 @@ MonoBehaviour:
   actionRate: 30
   invincibleTime: 0.6
   levelUpMenu: {fileID: 976486677}
-  totalItems: 14
+  upgradeMax: 8
+  subweaponInventoryMax: 0
+  lvlUpChoiceTitle1: {fileID: 1380950589}
+  lvlUpChoiceDescription1: {fileID: 68368284}
+  lvlUpChoiceImage1: {fileID: 1885483708}
+  lvlUpChoiceTitle2: {fileID: 1023668638}
+  lvlUpChoiceDescription2: {fileID: 556091755}
+  lvlUpChoiceImage2: {fileID: 1954549924}
   itemDatabase:
   - {fileID: 11400000, guid: 5934775b15e92e249bc10fc2f400d8ac, type: 2}
   - {fileID: 11400000, guid: 9eabe29066c6b694db828553af9ce7b7, type: 2}
+  - {fileID: 11400000, guid: 74b5cea0a2963ae419fb2ff3dd2fd397, type: 2}
+  - {fileID: 11400000, guid: 58d3006af4513744fa49683c0f5e1b99, type: 2}
+  - {fileID: 11400000, guid: 494e58c0da90bff48ba2b659848c2a49, type: 2}
+  - {fileID: 11400000, guid: 96c7fee735020034cb00936bc9a01809, type: 2}
+  - {fileID: 11400000, guid: ea2968930115cd741b17a1c0dad1758a, type: 2}
+  - {fileID: 11400000, guid: 8540ece1a447ed347b4e9aaa646d100f, type: 2}
+  - {fileID: 11400000, guid: 7abc9817859e0a84ba6fd384f7b70911, type: 2}
 --- !u!4 &2060696720
 Transform:
   m_ObjectHideFlags: 0

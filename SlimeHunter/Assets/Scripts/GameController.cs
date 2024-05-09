@@ -37,9 +37,19 @@ public class GameController : MonoBehaviour
     public static bool ultTime;
 
     public GameObject levelUpMenu;
-    public int totalItems;
     private int mainWeaponLvl;
     private List<Subweapon> subweapons;
+    public int upgradeMax;
+    public int subweaponInventoryMax;
+
+    public Text lvlUpChoiceTitle1;
+    public Text lvlUpChoiceDescription1;
+    public Image lvlUpChoiceImage1;
+    public Text lvlUpChoiceTitle2;
+    public Text lvlUpChoiceDescription2;
+    public Image lvlUpChoiceImage2;
+    private int currentButtonATag;
+    private int currentButtonBTag;
 
     public List<ItemDatabase> itemDatabase;
 
@@ -177,6 +187,80 @@ public class GameController : MonoBehaviour
         currentLvl++;
         Time.timeScale = 0f;
         levelUpMenu.SetActive(true);
+        UpgradePick();
+    }
+
+    void UpgradePick()
+    {
+        int a, b;
+        bool notGoodToGo = true;
+        do
+        {
+            a = Random.Range(0, itemDatabase.Count);
+            b = Random.Range(0, itemDatabase.Count);
+            notGoodToGo = PickChecker(a) || PickChecker(b);
+        } while (a == b || notGoodToGo);
+
+        lvlUpChoiceTitle1.text = itemDatabase[a].itemName;
+        lvlUpChoiceDescription1.text = itemDatabase[a].levelUpDescription[UpgradeChecker(a)];
+        lvlUpChoiceImage1.sprite = itemDatabase[a].sprite;
+        currentButtonATag = a;
+
+        lvlUpChoiceTitle2.text = itemDatabase[b].itemName;
+        lvlUpChoiceDescription2.text = itemDatabase[b].levelUpDescription[UpgradeChecker(b)];
+        lvlUpChoiceImage2.sprite = itemDatabase[b].sprite;
+        currentButtonBTag = b;
+    }
+
+    private bool PickChecker(int n)
+    {
+        switch(itemDatabase[n].tag)
+        {
+            case "MainWeapon":
+                if (mainWeaponLvl >= upgradeMax)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            case "SubWeapon":
+                if (subweapons.Count - 1 >= subweaponInventoryMax)
+                {
+                    return true;
+                }
+                for (int i = 0; i < subweapons.Count; i++)
+                {
+                    if (n == subweapons[i].code && subweapons[i].upgrade >= upgradeMax)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            default:
+                return false;
+        }
+    }
+
+    private int UpgradeChecker(int n)
+    {
+        switch (itemDatabase[n].tag)
+        {
+            case "MainWeapon":
+                return mainWeaponLvl;
+            case "SubWeapon":
+                for (int i = 0; i < subweapons.Count; i++)
+                {
+                    if (n == subweapons[i].code)
+                    {
+                        return subweapons[i].upgrade;
+                    }
+                }
+                return 0;
+            default:
+                return 0;
+        }
     }
 
     public void RestartButtonClicked()
@@ -187,6 +271,6 @@ public class GameController : MonoBehaviour
 
 class Subweapon
 {
-    int code;
-    int upgrade;
+    public int code;
+    public int upgrade;
 }
