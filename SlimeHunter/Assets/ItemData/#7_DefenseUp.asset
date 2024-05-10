@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13837f7c985efa64bbf2aeae91f7580e, type: 3}
   m_Name: '#7_DefenseUp'
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: d21477cfe5bd9b241829ff55ea9dc07a, type: 3}
+  sprite: {fileID: 21300000, guid: 05516a312f6f32049bfbb5056403816c, type: 3}
   tag: Passive
-  itemName: "\uC774\uB3D9\uC18D\uB3C4 \uC0C1\uC2B9"
+  itemName: "\uBC29\uC5B4\uB825 \uC0C1\uC2B9"
   levelUpDescription:
   - "[\uD328\uC2DC\uBE0C] \uD53C\uACA9 \uB370\uBBF8\uC9C0\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4."
   - 
@@ -25,4 +25,4 @@ MonoBehaviour:
   - 
   - 
   enhancementTag: 0800000000000000000000000000000000000000000000000000000000000000
-  enhancementValue: 0.03
+  enhancementValue: 1

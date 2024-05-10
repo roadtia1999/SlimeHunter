@@ -30,8 +30,7 @@ public class EnemyManager : MonoBehaviour
             HP -= GameController.hitDamage;
             if (HP <= 0)
             {
-                Instantiate(dropEXP, transform.position, new Quaternion(0, 0, 0, 0));
-                Destroy(gameObject);
+                EnemyDestroyed();
             }
         }
     }
@@ -50,5 +49,11 @@ public class EnemyManager : MonoBehaviour
                 GameController.playerHP -= 1;
             }
         }
+    }
+
+    public void EnemyDestroyed()
+    {
+        Instantiate(dropEXP, transform.position, new Quaternion(0, 0, 0, 0));
+        Destroy(gameObject);
     }
 }

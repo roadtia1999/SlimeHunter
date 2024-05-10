@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
 
         float rotZ = Mathf.Atan2(rotatePosition.y, rotatePosition.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + rotZ + 90f);
+        transform.localScale = new Vector3(GameController.projSize, GameController.projSize, 1f);
     }
 
     // Update is called once per frame

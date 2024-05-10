@@ -201,6 +201,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5473069}
   m_CullTransparentMesh: 1
+--- !u!1 &13642835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13642837}
+  - component: {fileID: 13642836}
+  m_Layer: 0
+  m_Name: Upgrader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &13642836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13642835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892ba665c43b33d418cadd52a2a7cc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &13642837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13642835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68368282
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +584,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 259414303}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 13642836}
+        m_TargetAssemblyTypeName: UpgradeButtonOnClick, Assembly-CSharp
+        m_MethodName: ButtonB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &259414303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,7 +3420,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1867300826}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 13642836}
+        m_TargetAssemblyTypeName: UpgradeButtonOnClick, Assembly-CSharp
+        m_MethodName: ButtonA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1867300826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3715,7 +3783,7 @@ MonoBehaviour:
   invincibleTime: 0.6
   levelUpMenu: {fileID: 976486677}
   upgradeMax: 8
-  subweaponInventoryMax: 0
+  subweaponInventoryMax: 3
   lvlUpChoiceTitle1: {fileID: 1380950589}
   lvlUpChoiceDescription1: {fileID: 68368284}
   lvlUpChoiceImage1: {fileID: 1885483708}

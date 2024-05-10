@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public static float hitDamage;
     public static float playerHP;
     public static float defense;
+    public static float projSize;
     public float playerMaxHP;
     public static bool invAfterHit;
     private bool invCoroutine;
@@ -49,8 +50,8 @@ public class GameController : MonoBehaviour
     public Text lvlUpChoiceTitle2;
     public Text lvlUpChoiceDescription2;
     public Image lvlUpChoiceImage2;
-    private int currentButtonATag;
-    private int currentButtonBTag;
+    public static int currentButtonATag;
+    public static int currentButtonBTag;
 
     public List<ItemDatabase> itemDatabase;
 
@@ -61,6 +62,7 @@ public class GameController : MonoBehaviour
         moveSpeed = 0.1f;
         fixedSpeed = 10.1f;
         hitDamage = 10f;
+        projSize = 1f;
         defense = 0;
         playerHP = playerMaxHP;
         invAfterHit = false;
@@ -214,6 +216,45 @@ public class GameController : MonoBehaviour
         currentButtonBTag = b;
     }
 
+    public void UpgradeButtonClick(int tag)
+    {
+        switch (itemDatabase[tag].enhancementTag[UpgradeChecker(tag)])
+        {
+            case 0: // InstaKill
+                InstaKill();
+                break;
+            case 1:
+                UpgradeDamage(tag);
+                break;
+            case 2:
+                UpgradeProjectile(tag);
+                break;
+            case 3:
+                UpgradeSize(tag);
+                break;
+            case 4:
+                HealUp();
+                break;
+            case 5:
+                Vaccum();
+                break;
+            case 6:
+                UpgradeMaxHP(tag);
+                break;
+            case 7:
+                UpgradeSpeed(tag);
+                break;
+            case 8:
+                UpgradeDefense(tag);
+                break;
+            default:
+                break;
+        }
+
+        levelUpMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
     private bool PickChecker(int n)
     {
         switch(itemDatabase[n].tag)
@@ -228,7 +269,7 @@ public class GameController : MonoBehaviour
                     return false;
                 }
             case "SubWeapon":
-                if (subweapons.Count - 1 >= subweaponInventoryMax)
+                if (subweapons.Count >= subweaponInventoryMax)
                 {
                     return true;
                 }
@@ -263,6 +304,83 @@ public class GameController : MonoBehaviour
             default:
                 return 0;
         }
+    }
+
+    private void InstaKill()
+    {
+        GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject obj in enemy)
+        {
+            EnemyManager em = obj.GetComponent<EnemyManager>();
+            em.EnemyDestroyed();
+        }
+    }
+
+    private void UpgradeDamage(int tag)
+    {
+        if (itemDatabase[tag].tag == "SubWeapon")
+        {
+
+        }
+        else
+        {
+            hitDamage += itemDatabase[tag].enhancementValue;
+        }
+    }
+
+    private void UpgradeProjectile(int tag)
+    {
+        if (itemDatabase[tag].tag == "SubWeapon")
+        {
+
+        }
+        else
+        {
+            Shooter shooter = player.GetComponent<Shooter>();
+            shooter.projUpgrade += 1;
+        }
+    }
+
+    private void UpgradeSize(int tag)
+    {
+        if (itemDatabase[tag].tag == "SubWeapon")
+        {
+
+        }
+        else
+        {
+            projSize += 0.1f;
+        }
+    }
+
+    private void HealUp()
+    {
+        playerHP = playerMaxHP;
+    }
+
+    private void Vaccum()
+    {
+        GameObject[] exp = GameObject.FindGameObjectsWithTag("Exp");
+        foreach (GameObject obj in exp)
+        {
+            ExpScript exs = obj.GetComponent<ExpScript>();
+            exs.Vaccumed();
+        }
+    }
+
+    private void UpgradeMaxHP(int tag)
+    {
+        playerMaxHP += itemDatabase[tag].enhancementValue;
+    }
+
+    private void UpgradeSpeed(int tag)
+    {
+        moveSpeed += itemDatabase[tag].enhancementValue;
+    }
+
+    private void UpgradeDefense(int tag)
+    {
+        defense += itemDatabase[tag].enhancementValue;
     }
 
     public void RestartButtonClicked()
