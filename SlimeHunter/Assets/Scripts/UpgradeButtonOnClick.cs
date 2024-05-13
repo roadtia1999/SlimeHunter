@@ -20,4 +20,9 @@ public class UpgradeButtonOnClick : MonoBehaviour
     {
         gc.UpgradeButtonClick(GameController.currentButtonBTag);
     }
+
+    public void ButtonTreasure()
+    {
+        gc.UpgradeButtonClick(GameController.currentTreasureTag);
+    }
 }

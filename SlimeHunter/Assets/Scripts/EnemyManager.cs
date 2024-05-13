@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     public float HP;
     public float Damage;
     public GameObject dropEXP;
+    public GameObject treasure;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,10 @@ public class EnemyManager : MonoBehaviour
 
     public void EnemyDestroyed()
     {
+        if (treasure != null)
+        {
+            Instantiate(treasure, transform.position, new Quaternion(0, 0, 0, 0));
+        }
         Instantiate(dropEXP, transform.position, new Quaternion(0, 0, 0, 0));
         Destroy(gameObject);
     }

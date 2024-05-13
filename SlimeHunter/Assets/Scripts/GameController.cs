@@ -53,6 +53,12 @@ public class GameController : MonoBehaviour
     public static int currentButtonATag;
     public static int currentButtonBTag;
 
+    public Text treasureTitle;
+    public Text treasureDescription;
+    public Image treasureImage;
+    public static int currentTreasureTag;
+    public GameObject treasureUI;
+
     public List<ItemDatabase> itemDatabase;
 
     // Start is called before the first frame update
@@ -174,6 +180,7 @@ public class GameController : MonoBehaviour
         playerColor.a = 0.6f;
         playerSprite.color = playerColor;
         hitEffect.gameObject.SetActive(true);
+        player.GetComponent<Collider2D>().enabled = false;
 
         yield return new WaitForSeconds(invincibleTime);
 
@@ -182,6 +189,7 @@ public class GameController : MonoBehaviour
         invCoroutine = false;
         invAfterHit = false;
         hitEffect.gameObject.SetActive(false);
+        player.GetComponent<Collider2D>().enabled = true;
     }
 
     void lvlUp()
@@ -205,15 +213,50 @@ public class GameController : MonoBehaviour
             notGoodToGo = PickChecker(a) || PickChecker(b);
         } while (a == b || notGoodToGo);
 
-        lvlUpChoiceTitle1.text = itemDatabase[a].itemName;
-        lvlUpChoiceDescription1.text = itemDatabase[a].levelUpDescription[UpgradeChecker(a)];
-        lvlUpChoiceImage1.sprite = itemDatabase[a].sprite;
-        currentButtonATag = a;
+        ItemButton(lvlUpChoiceTitle1, lvlUpChoiceDescription1, lvlUpChoiceImage1, ref currentButtonATag, a);
+        ItemButton(lvlUpChoiceTitle2, lvlUpChoiceDescription2, lvlUpChoiceImage2, ref currentButtonBTag, b);
+    }
 
-        lvlUpChoiceTitle2.text = itemDatabase[b].itemName;
-        lvlUpChoiceDescription2.text = itemDatabase[b].levelUpDescription[UpgradeChecker(b)];
-        lvlUpChoiceImage2.sprite = itemDatabase[b].sprite;
-        currentButtonBTag = b;
+    public void TreasureFound()
+    {
+        Time.timeScale = 0f;
+
+        if (!PickChecker(0))
+        {
+            ItemButton(treasureTitle, treasureDescription, treasureImage, ref currentTreasureTag, 0);
+            treasureUI.SetActive(true);
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < subweapons.Count; i++)
+            {
+                if (subweapons[i].upgrade < upgradeMax)
+                {
+                    ItemButton(treasureTitle, treasureDescription, treasureImage, ref currentTreasureTag, subweapons[i].code);
+                    treasureUI.SetActive(true);
+                    return;
+                }
+            }
+            do
+            {
+                int i = Random.Range(1, itemDatabase.Count);
+                if (itemDatabase[i].tag == "Instant" || itemDatabase[i].tag == "Passive")
+                {
+                    ItemButton(treasureTitle, treasureDescription, treasureImage, ref currentTreasureTag, i);
+                    treasureUI.SetActive(true);
+                    return;
+                }
+            } while(true);
+        }
+    }
+
+    public void ItemButton(Text title, Text description, Image sprite, ref int tag, int value)
+    {
+        title.text = itemDatabase[value].itemName;
+        description.text = itemDatabase[value].levelUpDescription[UpgradeChecker(value)];
+        sprite.sprite = itemDatabase[value].sprite;
+        tag = value;
     }
 
     public void UpgradeButtonClick(int tag)
@@ -252,6 +295,7 @@ public class GameController : MonoBehaviour
         }
 
         levelUpMenu.SetActive(false);
+        treasureUI.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -269,16 +313,16 @@ public class GameController : MonoBehaviour
                     return false;
                 }
             case "SubWeapon":
-                if (subweapons.Count >= subweaponInventoryMax)
-                {
-                    return true;
-                }
                 for (int i = 0; i < subweapons.Count; i++)
                 {
                     if (n == subweapons[i].code && subweapons[i].upgrade >= upgradeMax)
                     {
                         return true;
                     }
+                }
+                if (subweapons.Count >= subweaponInventoryMax)
+                {
+                    return true;
                 }
                 return false;
             default:
@@ -312,7 +356,10 @@ public class GameController : MonoBehaviour
         foreach (GameObject obj in enemy)
         {
             EnemyManager em = obj.GetComponent<EnemyManager>();
-            em.EnemyDestroyed();
+            if (em.treasure == null)
+            {
+                em.EnemyDestroyed();
+            }
         }
     }
 
