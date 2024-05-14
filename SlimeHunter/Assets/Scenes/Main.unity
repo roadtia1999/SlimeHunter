@@ -3235,16 +3235,17 @@ MonoBehaviour:
   MaxY: 3.5
   MinY: -3.5
   waveTime: 60
-  Lvl1_SpawnTime: 2
-  Lvl2_SpawnTime: 1
-  Lvl3_SpawnTime: 0.75
-  Lvl4_SpawnTime: 0.75
-  Lvl5_SpawnTime: 0.5
-  Lvl6_SpawnTime: 1
-  Lvl7_SpawnTime: 0.75
-  Lvl8_SpawnTime: 0.75
-  Lvl9_SpawnTime: 0.5
-  Lvl10_SpawnTime: 0.5
+  patternTime:
+  - 2
+  - 1
+  - 0.75
+  - 0.75
+  - 0.5
+  - 1
+  - 0.75
+  - 0.75
+  - 0.5
+  - 0.5
   Lvl3_Pattern_SpawnTime: 9.5
   Lvl5_Pattern_SpawnTime: 5
   Lvl9_Pattern_SpawnTime: 2.5

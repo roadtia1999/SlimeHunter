@@ -14,16 +14,7 @@ public class EnemySpawner : MonoBehaviour
     public float MinY;
 
     public int waveTime;
-    public float Lvl1_SpawnTime;
-    public float Lvl2_SpawnTime;
-    public float Lvl3_SpawnTime;
-    public float Lvl4_SpawnTime;
-    public float Lvl5_SpawnTime;
-    public float Lvl6_SpawnTime;
-    public float Lvl7_SpawnTime;
-    public float Lvl8_SpawnTime;
-    public float Lvl9_SpawnTime;
-    public float Lvl10_SpawnTime;
+    public float[] patternTime;
 
     public float Lvl3_Pattern_SpawnTime;
     public float Lvl5_Pattern_SpawnTime;
@@ -56,15 +47,15 @@ public class EnemySpawner : MonoBehaviour
         switch (currentWave)
         {
             case 0: // level 1
-                NormalPattern(Lvl1_SpawnTime, enemyList[0], currentWave);
+                NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
                 break;
             case 1: // level 2
-                NormalPattern(Lvl2_SpawnTime, enemyList[0], currentWave);
+                NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
                 break;
             case 2: // level 3
                 if (Lvl3_Pattern_On)
                 {
-                    NormalPattern(Lvl3_SpawnTime, enemyList[0], currentWave);
+                    NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
                 }
                 else
                 {
@@ -75,7 +66,7 @@ public class EnemySpawner : MonoBehaviour
             case 3: // level 4
                 if (Lvl4_Pattern_On)
                 {
-                    NormalPattern(Lvl4_SpawnTime, enemyList[0], currentWave);
+                    NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
                 }
                 else
                 {
@@ -86,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
             case 4: // level 5
                 if (Lvl5_Pattern_On)
                 {
-                    NormalPattern(Lvl5_SpawnTime, enemyList[0], currentWave);
+                    NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
                 }
                 else
                 {
@@ -95,15 +86,15 @@ public class EnemySpawner : MonoBehaviour
                 }
                 break;
             case 5: // level 6
-                NormalPattern(Lvl6_SpawnTime, enemyList[1], currentWave);
+                NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
                 break;
             case 6: // level 7
-                NormalPattern(Lvl7_SpawnTime, enemyList[1], currentWave);
+                NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
                 break;
             case 7: // level 8
                 if (Lvl8_Pattern_On)
                 {
-                    NormalPattern(Lvl8_SpawnTime, enemyList[1], currentWave);
+                    NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
                 }
                 else
                 {
@@ -114,7 +105,7 @@ public class EnemySpawner : MonoBehaviour
             case 8: // level 9
                 if (Lvl9_Pattern_On)
                 {
-                    NormalPattern(Lvl9_SpawnTime, enemyList[1], currentWave);
+                    NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
                 }
                 else
                 {
@@ -123,7 +114,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 break;
             case 9: // level 10
-                NormalPattern(Lvl10_SpawnTime, enemyList[5], currentWave);
+                NormalPattern(patternTime[currentWave], enemyList[5], currentWave);
                 break;
             case 10: // gamekiller
                 if (!endTime)
