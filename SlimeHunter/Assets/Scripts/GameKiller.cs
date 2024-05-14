@@ -13,7 +13,7 @@ public class GameKiller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position == new Vector3(0, 0, 0))
+        if (TimeCount.timePassed > 602)
         {
             GameController.playerHP = 0;
         }

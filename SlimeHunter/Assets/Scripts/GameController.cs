@@ -294,6 +294,25 @@ public class GameController : MonoBehaviour
                 break;
         }
 
+        switch (itemDatabase[tag].tag)
+        {
+            case "MainWeapon":
+                mainWeaponLvl += 1;
+                break;
+            case "SubWeapon":
+                for (int i = 0; i < subweapons.Count; i++)
+                {
+                    if (tag == subweapons[i].code)
+                    {
+                        subweapons[i].upgrade++;
+                        break;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+
         levelUpMenu.SetActive(false);
         treasureUI.SetActive(false);
         Time.timeScale = 1f;

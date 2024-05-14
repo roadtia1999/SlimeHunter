@@ -27,7 +27,7 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.playerHP > 0)
+        if (GameController.playerHP > 0 && TimeCount.timePassed < 600)
         {
             if (GameController.ultTime == true)
             {
@@ -56,6 +56,15 @@ public class Shooter : MonoBehaviour
         {
             case 1:
                 Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 0));
+                break;
+            case 2:
+                Instantiate(proj, transform.position, Quaternion.Euler(0, 0, -5));
+                Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 5));
+                break;
+            case 3:
+                Instantiate(proj, transform.position, Quaternion.Euler(0, 0, -10));
+                Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 0));
+                Instantiate(proj, transform.position, Quaternion.Euler(0, 0, 10));
                 break;
             default:
                 break;
