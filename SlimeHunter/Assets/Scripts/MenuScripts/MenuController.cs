@@ -12,13 +12,41 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Application.targetFrameRate = 144;
+        int togglecheck = PlayerPrefs.GetInt("disableMute");
+        if (togglecheck == 1)
+        {
+            disableMuteToggle.isOn = true;
+        }
+        else
+        {
+            disableMuteToggle.isOn = false;
+        }
+
+        volumeSlider.value = PlayerPrefs.GetFloat("volume");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void VolumeSlider()
+    {
+        PlayerPrefs.SetFloat("volume", volumeSlider.value);
+    }
+
+    public void DisableToggle()
+    {
+        if (disableMuteToggle.isOn)
+        {
+            PlayerPrefs.SetInt("disableMute", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("disableMute", 0);
+        }
     }
 
     public void SettingsButtonClicked()
