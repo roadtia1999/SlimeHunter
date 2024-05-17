@@ -4621,6 +4621,7 @@ MonoBehaviour:
   playerMaxHP: 100
   levelOneMaxEXP: 8
   HPBar: {fileID: 565330159}
+  HPText: {fileID: 914550203}
   actionBar: {fileID: 592870445}
   EXPBar: {fileID: 1282620181}
   actionRate: 30
