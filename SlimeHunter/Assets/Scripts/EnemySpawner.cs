@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> enemyList;
     private float spawnTime;
     public static bool endTime;
+    public static bool gameOver;
 
     public float MaxX;
     public float MinX;
@@ -30,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnTime = 0;
+        gameOver = false;
         endTime = false;
 
         Lvl3_Pattern_On = false;
@@ -44,87 +46,90 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTime += Time.deltaTime;
         int currentWave = (int)TimeCount.timePassed / waveTime;
-        switch (currentWave)
+        if (!gameOver)
         {
-            case 0: // level 1
-                NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
-                break;
-            case 1: // level 2
-                NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
-                break;
-            case 2: // level 3
-                if (Lvl3_Pattern_On)
-                {
+            switch (currentWave)
+            {
+                case 0: // level 1
                     NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
-                }
-                else
-                {
-                    StartCoroutine(PatternSpawn(Lvl3_Pattern_SpawnTime, enemyList[1], currentWave + 1));
-                    Lvl3_Pattern_On = true;
-                }
-                break;
-            case 3: // level 4
-                if (Lvl4_Pattern_On)
-                {
+                    break;
+                case 1: // level 2
                     NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
-                }
-                else
-                {
-                    Instantiate(enemyList[3], RandomSpawnPoint(), Quaternion.identity);
-                    Lvl4_Pattern_On = true;
-                }
-                break;
-            case 4: // level 5
-                if (Lvl5_Pattern_On)
-                {
-                    NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
-                }
-                else
-                {
-                    StartCoroutine(PatternSpawn(Lvl5_Pattern_SpawnTime, enemyList[1], currentWave + 1));
-                    Lvl5_Pattern_On = true;
-                }
-                break;
-            case 5: // level 6
-                NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
-                break;
-            case 6: // level 7
-                NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
-                break;
-            case 7: // level 8
-                if (Lvl8_Pattern_On)
-                {
+                    break;
+                case 2: // level 3
+                    if (Lvl3_Pattern_On)
+                    {
+                        NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
+                    }
+                    else
+                    {
+                        StartCoroutine(PatternSpawn(Lvl3_Pattern_SpawnTime, enemyList[1], currentWave + 1));
+                        Lvl3_Pattern_On = true;
+                    }
+                    break;
+                case 3: // level 4
+                    if (Lvl4_Pattern_On)
+                    {
+                        NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
+                    }
+                    else
+                    {
+                        Instantiate(enemyList[3], RandomSpawnPoint(), Quaternion.identity);
+                        Lvl4_Pattern_On = true;
+                    }
+                    break;
+                case 4: // level 5
+                    if (Lvl5_Pattern_On)
+                    {
+                        NormalPattern(patternTime[currentWave], enemyList[0], currentWave);
+                    }
+                    else
+                    {
+                        StartCoroutine(PatternSpawn(Lvl5_Pattern_SpawnTime, enemyList[1], currentWave + 1));
+                        Lvl5_Pattern_On = true;
+                    }
+                    break;
+                case 5: // level 6
                     NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
-                }
-                else
-                {
-                    Instantiate(enemyList[4], RandomSpawnPoint(), Quaternion.identity);
-                    Lvl8_Pattern_On = true;
-                }
-                break;
-            case 8: // level 9
-                if (Lvl9_Pattern_On)
-                {
+                    break;
+                case 6: // level 7
                     NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
-                }
-                else
-                {
-                    StartCoroutine(PatternSpawn(Lvl9_Pattern_SpawnTime, enemyList[5], currentWave + 1));
-                    Lvl9_Pattern_On = true;
-                }
-                break;
-            case 9: // level 10
-                NormalPattern(patternTime[currentWave], enemyList[5], currentWave);
-                break;
-            case 10: // gamekiller
-                if (!endTime)
-                {
-                    Instantiate(enemyList[2], new Vector3(0, 5, 0), Quaternion.identity);
-                    endTime = true;
-                }
-                break;
-            default:
-                break;
+                    break;
+                case 7: // level 8
+                    if (Lvl8_Pattern_On)
+                    {
+                        NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
+                    }
+                    else
+                    {
+                        Instantiate(enemyList[4], RandomSpawnPoint(), Quaternion.identity);
+                        Lvl8_Pattern_On = true;
+                    }
+                    break;
+                case 8: // level 9
+                    if (Lvl9_Pattern_On)
+                    {
+                        NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
+                    }
+                    else
+                    {
+                        StartCoroutine(PatternSpawn(Lvl9_Pattern_SpawnTime, enemyList[5], currentWave + 1));
+                        Lvl9_Pattern_On = true;
+                    }
+                    break;
+                case 9: // level 10
+                    NormalPattern(patternTime[currentWave], enemyList[5], currentWave);
+                    break;
+                case 10: // gamekiller
+                    if (!endTime)
+                    {
+                        Instantiate(enemyList[2], new Vector3(0, 5, 0), Quaternion.identity);
+                        endTime = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

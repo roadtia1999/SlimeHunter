@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     public static int currentLvl;
 
     public Slider HPBar;
+    public Text HPText;
     public Slider actionBar;
     public Slider EXPBar;
     private float actionReady;
@@ -80,6 +81,7 @@ public class GameController : MonoBehaviour
         currentLvl = 1;
 
         HPBar.value = playerHP / playerMaxHP;
+        HPText.text = string.Format("{0} / {1}", playerHP, playerMaxHP);
         actionBar.value = 0;
         actionReady = 0;
 
@@ -162,6 +164,7 @@ public class GameController : MonoBehaviour
         {
             HPBar.value = playerHP / playerMaxHP;
         }
+        HPText.text = string.Format("{0} / {1}", playerHP, playerMaxHP);
 
         if (currentEXP / currentMaxEXP >= 1)
         {

@@ -27,6 +27,7 @@ public class PlayerDead : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         anim.speed = 0f;
+        EnemySpawner.gameOver = true;
         gameOverMenu.SetActive(true);
     }
 }
