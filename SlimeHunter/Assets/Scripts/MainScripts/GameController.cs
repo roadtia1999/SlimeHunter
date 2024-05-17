@@ -456,6 +456,11 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void ExitButtonClicked()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
 
 class Subweapon
