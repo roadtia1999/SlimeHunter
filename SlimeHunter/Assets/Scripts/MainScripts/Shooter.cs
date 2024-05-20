@@ -15,6 +15,7 @@ public class Shooter : MonoBehaviour
 
     public GameObject proj;
     public GameObject ultEffect;
+    public AudioSource shootSound;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,10 @@ public class Shooter : MonoBehaviour
             default:
                 break;
         }
+
+        shootSound.volume = GameController.volume;
+        shootSound.loop = false;
+        shootSound.Play();
     }
 
     IEnumerator NormalShoot()

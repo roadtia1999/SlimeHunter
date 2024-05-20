@@ -28,6 +28,9 @@ public class ActiveGameOverButton : MonoBehaviour
 
     public void GameOverSound()
     {
+        GameController gc = GameObject.Find("GameController").GetComponent<GameController>();
+        gc.bgm.Stop();
+
         gameOverSound.volume = GameController.volume;
         gameOverSound.loop = false;
         gameOverSound.Play();
