@@ -29,11 +29,13 @@ public class SoundMaker : MonoBehaviour
 
     public void ButtonSound()
     {
-
+        buttonSound.loop = false;
+        buttonSound.Play();
     }
 
     public void ConfirmSound()
     {
-
+        confirmSound.loop = false;
+        confirmSound.Play();
     }
 }
