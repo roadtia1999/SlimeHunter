@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActiveGameOverButton : MonoBehaviour
 {
+    public AudioSource gameOverSound;
     public GameObject restartButton;
     public GameObject exitButton;
 
@@ -23,5 +24,12 @@ public class ActiveGameOverButton : MonoBehaviour
     {
         restartButton.SetActive(true);
         exitButton.SetActive(true);
+    }
+
+    public void GameOverSound()
+    {
+        gameOverSound.volume = GameController.volume;
+        gameOverSound.loop = false;
+        gameOverSound.Play();
     }
 }

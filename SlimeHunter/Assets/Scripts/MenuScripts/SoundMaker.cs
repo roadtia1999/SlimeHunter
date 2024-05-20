@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundMaker : MonoBehaviour
 {
-    private float volume;
+    public static float volume;
     public AudioSource bgm;
     public AudioSource buttonSound;
     public AudioSource confirmSound;
@@ -13,12 +13,18 @@ public class SoundMaker : MonoBehaviour
     void Start()
     {
         volume = PlayerPrefs.GetFloat("volume");
+        bgm.volume = volume;
+        bgm.loop = true;
+        bgm.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        volume = PlayerPrefs.GetFloat("volume");
+        bgm.volume = volume;
+        buttonSound.volume = volume;
+        confirmSound.volume = volume;
     }
 
     public void ButtonSound()

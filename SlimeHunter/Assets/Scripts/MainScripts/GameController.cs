@@ -62,6 +62,9 @@ public class GameController : MonoBehaviour
 
     public List<ItemDatabase> itemDatabase;
 
+    public static float volume;
+    public AudioSource bgm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,6 +89,11 @@ public class GameController : MonoBehaviour
         actionReady = 0;
 
         mainWeaponLvl = 0;
+
+        volume = PlayerPrefs.GetFloat("volume");
+        bgm.volume = volume;
+        bgm.loop = true;
+        bgm.Play();
     }
 
     // Update is called once per frame

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -47,6 +48,11 @@ public class MenuController : MonoBehaviour
         {
             PlayerPrefs.SetInt("disableMute", 0);
         }
+    }
+
+    public void StartButtonClicked()
+    {
+        SceneManager.LoadScene("Main");
     }
 
     public void SettingsButtonClicked()
