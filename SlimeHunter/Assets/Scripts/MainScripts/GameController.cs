@@ -64,6 +64,7 @@ public class GameController : MonoBehaviour
 
     public static float volume;
     public AudioSource bgm;
+    private int disableMute;
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +92,7 @@ public class GameController : MonoBehaviour
         mainWeaponLvl = 0;
 
         volume = PlayerPrefs.GetFloat("volume");
+        disableMute = PlayerPrefs.GetInt("disableMute");
         bgm.volume = volume;
         bgm.loop = true;
         bgm.Play();
@@ -126,6 +128,29 @@ public class GameController : MonoBehaviour
             if (currentEXP >= currentMaxEXP)
             {
                 lvlUp();
+            }
+        }
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (disableMute == 1)
+        {
+            AudioSource[] allAudio = FindObjectsOfType<AudioSource>();
+
+            if (!focus)
+            {
+                foreach (AudioSource aud in allAudio)
+                {
+                    aud.volume = 0;
+                }
+            }
+            else
+            {
+                foreach (AudioSource aud in allAudio)
+                {
+                    aud.volume = volume;
+                }
             }
         }
     }
