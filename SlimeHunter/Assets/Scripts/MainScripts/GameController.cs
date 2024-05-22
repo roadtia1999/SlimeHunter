@@ -345,6 +345,9 @@ public class GameController : MonoBehaviour
                     }
                 }
 
+                Instantiate(itemDatabase[tag].subWeaponPrefab);
+                GameObject.Find("SW" + tag.ToString() + "Image").transform.position += new Vector3(subweapons.Count * 60, 0, 0);
+
                 Subweapon sb = new Subweapon();
                 sb.code = tag;
                 sb.upgrade = 1;
