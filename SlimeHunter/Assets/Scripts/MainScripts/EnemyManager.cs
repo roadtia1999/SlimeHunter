@@ -29,10 +29,16 @@ public class EnemyManager : MonoBehaviour
         if (collision.gameObject.name.Contains("Projectile"))
         {
             HP -= GameController.hitDamage;
-            if (HP <= 0)
-            {
-                EnemyDestroyed();
-            }
+        }
+        else if (collision.gameObject.name.Contains("SubWeapon"))
+        {
+            float dmg = collision.gameObject.GetComponent<SubWeaponDmg>().dmg;
+            HP -= dmg;
+        }
+
+        if (HP <= 0)
+        {
+            EnemyDestroyed();
         }
     }
 
