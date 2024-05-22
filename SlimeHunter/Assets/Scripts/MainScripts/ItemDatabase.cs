@@ -15,6 +15,7 @@ public class ItemDatabase : ScriptableObject
     public Sprite sprite;
     public string tag;
     public string itemName;
+    public GameObject subWeaponPrefab;
     public string[] levelUpDescription;
     public int[] enhancementTag;
     public float enhancementValue;
