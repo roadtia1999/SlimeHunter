@@ -344,6 +344,11 @@ public class GameController : MonoBehaviour
                         break;
                     }
                 }
+
+                Subweapon sb = new Subweapon();
+                sb.code = tag;
+                sb.upgrade = 1;
+                subweapons.Add(sb);
                 break;
             default:
                 break;
