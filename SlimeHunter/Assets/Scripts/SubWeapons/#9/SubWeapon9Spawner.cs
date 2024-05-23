@@ -17,11 +17,16 @@ public class SubWeapon9Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeCount += Time.deltaTime;
-        if (timeCount > attackRate)
+        if (!EnemySpawner.gameOver)
         {
-            Instantiate(mine);
-            timeCount = 0;
+            timeCount += Time.deltaTime;
+            if (timeCount > attackRate)
+            {
+                GameObject obj = Instantiate(mine);
+                SubWeaponDmg dmg = obj.GetComponent<SubWeaponDmg>();
+                // dmg.dmg += dmgUpgrade;
+                timeCount = 0;
+            }
         }
     }
 }

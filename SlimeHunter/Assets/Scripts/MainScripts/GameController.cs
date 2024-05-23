@@ -430,7 +430,13 @@ public class GameController : MonoBehaviour
     {
         if (itemDatabase[tag].tag == "SubWeapon")
         {
-
+            for (int i = 0; i < subweapons.Count; i++)
+            {
+                if (subweapons[i].code == tag)
+                {
+                    
+                }
+            }
         }
         else
         {

@@ -188,8 +188,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4060856364954875578}
   - component: {fileID: 2329933155771332565}
+  - component: {fileID: 1362204345342560245}
   m_Layer: 0
-  m_Name: 9_Wasabi_Sushi
+  m_Name: 9_SubWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,3 +226,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mine: {fileID: 4301231996576041665, guid: b5a11365bd826e440ab8937467afe830, type: 3}
   attackRate: 10
+--- !u!114 &1362204345342560245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060856364954875579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6416a51c479048743a0abd3c13433554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
