@@ -13,7 +13,7 @@ public class MoveWithBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.playerHP > 0)
+        if (GameController.playerHP > 0 && TimeCount.timePassed < 600)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");

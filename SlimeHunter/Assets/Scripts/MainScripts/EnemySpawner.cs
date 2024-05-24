@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     private float spawnTime;
     public static bool endTime;
     public static bool gameOver;
+    public AudioSource gameKillerAudio;
 
     public float MaxX;
     public float MinX;
@@ -123,6 +124,9 @@ public class EnemySpawner : MonoBehaviour
                 case 10: // gamekiller
                     if (!endTime)
                     {
+                        gameKillerAudio.volume = GameController.volume;
+                        gameKillerAudio.loop = false;
+                        gameKillerAudio.Play();
                         Instantiate(enemyList[2], new Vector3(0, 5, 0), Quaternion.identity);
                         endTime = true;
                     }
