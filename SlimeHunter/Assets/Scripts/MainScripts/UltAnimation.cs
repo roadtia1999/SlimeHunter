@@ -9,15 +9,20 @@ public class UltAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        aud.volume = GameController.volume;
-        aud.loop = false;
-        aud.Play();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void StartSoundPlay()
+    {
+        aud.volume = GameController.volume;
+        aud.loop = false;
+        aud.Play();
     }
 
     private void AnimationEnd()
