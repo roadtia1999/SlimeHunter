@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public GameObject settingsPanel;
+    public GameObject tutorialPanel;
     public Slider volumeSlider;
     public Toggle disableMuteToggle;
 
@@ -60,9 +61,15 @@ public class MenuController : MonoBehaviour
         settingsPanel.SetActive(true);
     }
 
+    public void TutorialButtonClicked()
+    {
+        tutorialPanel.SetActive(true);
+    }
+
     public void ReturnToMenu()
     {
         settingsPanel.SetActive(false);
+        tutorialPanel.SetActive(false);
     }
 
     public void QuitGame()
