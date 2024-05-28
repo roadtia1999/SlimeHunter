@@ -30,8 +30,10 @@ public class ExpScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameController.currentEXP += EXP;
-        Destroy(gameObject);
+        if (collision.tag == "Player") {
+            GameController.currentEXP += EXP;
+            Destroy(gameObject);
+        }
     }
 
     public void Vaccumed()

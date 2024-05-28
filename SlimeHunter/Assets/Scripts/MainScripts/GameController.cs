@@ -105,6 +105,11 @@ public class GameController : MonoBehaviour
 
         if (playerHP > 0)
         {
+            if (playerHP > playerMaxHP)
+            {
+                playerHP = playerMaxHP;
+            }
+
             if (TimeCount.timePassed < 600)
             {
                 bgMove();

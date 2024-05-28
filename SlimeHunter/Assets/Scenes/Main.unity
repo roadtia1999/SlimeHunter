@@ -1845,7 +1845,7 @@ GameObject:
   - component: {fileID: 636965092}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3947,6 +3947,7 @@ MonoBehaviour:
   - {fileID: 6065790179202860038, guid: e34585fce1cb8de45b0bc6b9e8767f5c, type: 3}
   - {fileID: 6065790179202860038, guid: 13485ba2177f26d41b5f919f408e1c21, type: 3}
   - {fileID: 8705329047986461974, guid: e32589d5d9905a643b4ad9bce71f7bf6, type: 3}
+  - {fileID: 7444072004691678816, guid: 5b08fe0196b42f44da7f3b613832c78a, type: 3}
   gameKillerAudio: {fileID: 1453399777}
   MaxX: 5.5
   MinX: -5.5
@@ -3966,7 +3967,9 @@ MonoBehaviour:
   - 0.5
   Lvl3_Pattern_SpawnTime: 9.5
   Lvl5_Pattern_SpawnTime: 5
+  Lvl7_Pattern_SpawnTime: 7.5
   Lvl9_Pattern_SpawnTime: 2.5
+  Lvl10_Pattern_SpawnTime: 5
 --- !u!4 &1453399776
 Transform:
   m_ObjectHideFlags: 0

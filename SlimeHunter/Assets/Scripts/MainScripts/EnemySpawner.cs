@@ -20,13 +20,17 @@ public class EnemySpawner : MonoBehaviour
 
     public float Lvl3_Pattern_SpawnTime;
     public float Lvl5_Pattern_SpawnTime;
+    public float Lvl7_Pattern_SpawnTime;
     public float Lvl9_Pattern_SpawnTime;
+    public float Lvl10_Pattern_SpawnTime;
 
     private bool Lvl3_Pattern_On;
     private bool Lvl4_Pattern_On;
     private bool Lvl5_Pattern_On;
+    private bool Lvl7_Pattern_On;
     private bool Lvl8_Pattern_On;
     private bool Lvl9_Pattern_On;
+    private bool Lvl10_Pattern_On;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +42,10 @@ public class EnemySpawner : MonoBehaviour
         Lvl3_Pattern_On = false;
         Lvl4_Pattern_On = false;
         Lvl5_Pattern_On = false;
+        Lvl7_Pattern_On = false;
         Lvl8_Pattern_On = false;
         Lvl9_Pattern_On = false;
+        Lvl10_Pattern_On = false;
     }
 
     // Update is called once per frame
@@ -94,7 +100,15 @@ public class EnemySpawner : MonoBehaviour
                     NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
                     break;
                 case 6: // level 7
-                    NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
+                    if (Lvl7_Pattern_On)
+                    {
+                        NormalPattern(patternTime[currentWave], enemyList[1], currentWave);
+                    }
+                    else
+                    {
+                        StartCoroutine(PatternSpawn(Lvl7_Pattern_SpawnTime, enemyList[6], currentWave + 1));
+                        Lvl7_Pattern_On = true;
+                    }
                     break;
                 case 7: // level 8
                     if (Lvl8_Pattern_On)
@@ -119,7 +133,15 @@ public class EnemySpawner : MonoBehaviour
                     }
                     break;
                 case 9: // level 10
-                    NormalPattern(patternTime[currentWave], enemyList[5], currentWave);
+                    if (Lvl10_Pattern_On)
+                    {
+                        NormalPattern(patternTime[currentWave], enemyList[5], currentWave);
+                    }
+                    else
+                    {
+                        StartCoroutine(PatternSpawn(Lvl10_Pattern_SpawnTime, enemyList[6], currentWave + 1));
+                        Lvl10_Pattern_On = true;
+                    }
                     break;
                 case 10: // gamekiller
                     if (!endTime)
@@ -148,7 +170,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 RandomSpawnPoint()
     {
-        int rand = Random.Range(1, 4);
+        int rand = Random.Range(1, 5);
 
         switch (rand)
         {
@@ -171,6 +193,6 @@ public class EnemySpawner : MonoBehaviour
         {
             Instantiate(obj, RandomSpawnPoint(), Quaternion.identity);
             yield return new WaitForSeconds(spawnRoutine);
-        } while (TimeCount.timePassed < level * 60);
+        } while (TimeCount.timePassed < level * 60 && !gameOver);
     }
 }

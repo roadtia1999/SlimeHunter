@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TreasureFound : MonoBehaviour
+public class Cheese : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -21,8 +20,7 @@ public class TreasureFound : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GameController gc = GameObject.Find("GameController").GetComponent<GameController>();
-            gc.TreasureFound();
+            GameController.playerHP += 5;
             Destroy(gameObject);
         }
     }

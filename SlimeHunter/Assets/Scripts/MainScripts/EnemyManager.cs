@@ -6,13 +6,17 @@ public class EnemyManager : MonoBehaviour
 {
     public float HP;
     public float Damage;
+    private float healingTime;
+    private float healingRoutine;
     public GameObject dropEXP;
     public GameObject treasure;
+    public GameObject cheese;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        healingTime = 0;
+        healingRoutine = 4f;
     }
 
     // Update is called once per frame
@@ -44,7 +48,7 @@ public class EnemyManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!GameController.invAfterHit)
+        if (collision.tag == "Player" && !GameController.invAfterHit)
         {
             GameController.invAfterHit = true;
             if (Damage - GameController.defense > 1)
@@ -56,6 +60,15 @@ public class EnemyManager : MonoBehaviour
                 GameController.playerHP -= 1;
             }
         }
+        else if (collision.tag == "EnemyHeal" && !gameObject.name.Contains("Healer"))
+        {
+            healingTime += Time.deltaTime;
+
+            if (healingTime > healingRoutine)
+            {
+                HP += 50;
+            }
+        }
     }
 
     public void EnemyDestroyed()
@@ -63,6 +76,14 @@ public class EnemyManager : MonoBehaviour
         if (treasure != null)
         {
             Instantiate(treasure, transform.position, new Quaternion(0, 0, 0, 0));
+        }
+        else
+        {
+            int rand = Random.Range(1, 100);
+            if (rand <= 3)
+            {
+                Instantiate(cheese, transform.position, new Quaternion(0, 0, 0, 0));
+            }
         }
         Instantiate(dropEXP, transform.position, new Quaternion(0, 0, 0, 0));
         Destroy(gameObject);

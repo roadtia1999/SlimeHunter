@@ -131,6 +131,7 @@ MonoBehaviour:
   Damage: 15
   dropEXP: {fileID: 8616557658513648767, guid: 7f7bb61c12bfd4a418e5aec93cefd19c, type: 3}
   treasure: {fileID: 6701758437689819173, guid: c33ed50e7d62e5c48852d5495fdcc8a3, type: 3}
+  cheese: {fileID: 4025338581506038357, guid: 47df19810e5e11a49bd2fab0bb4a9a52, type: 3}
 --- !u!58 &6065790179202860046
 CircleCollider2D:
   m_ObjectHideFlags: 0
