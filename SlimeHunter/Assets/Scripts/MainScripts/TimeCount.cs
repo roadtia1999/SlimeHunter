@@ -13,7 +13,7 @@ public class TimeCount : MonoBehaviour
     {
         text = GetComponent<Text>();
         text.text = "00:00";
-        timePassed = 540;
+        timePassed = 0;
     }
 
     // Update is called once per frame
